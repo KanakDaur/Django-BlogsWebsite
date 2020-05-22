@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>comment delete</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style media="screen">
+      body{
+        background-image: url("{% static 'images/delete.jpeg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <center><br><br>
+      <form method="post">
+        {% csrf_token %}
+          <h1>{{comment.user|title}}, Do you really want to delete the comment : {{comment.content}}</h1><br>
+          <input type="submit" value="Yes, Delete" class="btn btn-danger">
+          <a href="/allblogs" class="btn btn-info">No, Cancel</a>
+      </form>
+    </center>
+  </body>
+</html>

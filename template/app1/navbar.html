@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Blogs Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style media="screen">
+    #navi
+    {
+      width:85%;
+      height:60px;
+      font-size:18px;
+      background-color:black;
+      font-family:serif;
+    }
+    body
+    {
+      color:white;
+      background-image:url("{% static 'images/grey.jpeg' %}");
+      background-repeat:no-repeat;
+      background-size: cover;
+      font-family:monospace;
+      background-position: center center;
+      background-attachment: fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+    }
+    .img-rounded {
+      width: 50px;
+      height: 50px;
+      float: left;
+      border-radius: 50%;
+      margin-top: 4px;
+    }
+
+  </style>
+</head>
+<body>
+  <center>
+<h1 style="text-shadow:5px 5px black; font-size:50px;">BLOGGERS</h1>
+<br>
+<nav class="navbar navbar-inverse" id="navi">
+  <a class="navbar-brand">
+   <img src="{% static 'images/b.png' %}" alt="Logo" style="width:40px;height:30px;">
+ </a>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/" style="font-size:30px;">BLOGGERS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/allblogs">All Blogs</a></li>
+      <li><a href="/postblogs">Post Blogs</a></li>
+      <li><a href="/myblogs">My Blogs</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {% if not request.user.is_authenticated %}
+      <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      {% endif %}
+      {% if not request.user.is_authenticated %}
+      <li><a href="/accounts/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      {% endif %}
+      {% if request.user.is_authenticated %}
+      <li>
+        <img src="{{request.user.profile.photo.url}}" alt="" class="img-rounded">
+        <a href="/edit_profile">Hey !!! {{user.get_username|title}}</a>
+      </li>
+      <li><a href="/accounts/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+</body>
+{% block body_block %}
+{% endblock %}
+</html>

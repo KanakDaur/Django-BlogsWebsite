@@ -1,0 +1,80 @@
+{% extends 'app1/navbar.html' %}
+{% block body_block %}
+{% load static %}
+<style media="screen">
+  #blogjumbo{
+    background-image:url("{% static 'images/black.jpeg' %}");
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+  #btngrp{
+    background-color:black;
+    color:white;
+    font-family:serif;
+  }
+</style>
+  <title>Fashion category blogs</title>
+  <body>
+    <center>
+      <div class="btn-group btn-group-justified" role="group" >
+        <div class="btn-group" role="group">
+          <a href="/educational_cat"><button type="button" class="btn btn-default" id="btngrp" >Education</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/fashion_cat"><button type="button" class="btn btn-default" id="btngrp">Fashion</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/food_cat"><button type="button" class="btn btn-default" id="btngrp">Food</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/movie_music_cat"><button type="button" class="btn btn-default" id="btngrp">Movie & Music</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/parenting_cat"><button type="button" class="btn btn-default" id="btngrp">Parenting</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/travel_cat"><button type="button" class="btn btn-default" id="btngrp">Travel</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/personal_cat"><button type="button" class="btn btn-default" id="btngrp">Personal</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/sports_cat"><button type="button" class="btn btn-default" id="btngrp">Sports</button></a>
+        </div>
+        <div class="btn-group" role="group">
+          <a href="/other_cat"><button type="button" class="btn btn-default" id="btngrp">Other</button></a>
+        </div>
+      </div><br>
+      <h1 style="text-shadow:3px 3px black;">All Fashion Blogs</h1><br>
+      {% if fashion %}
+      {% for i in fashion %}
+      <div style="color:white;">
+        <div class="jumbotron" style="width:1000px; border-radius:200px;" id="blogjumbo">
+          <h2 class="display-4">{{i.title}}</h2>
+          <br>
+                <a class="btn-lg" href="/{{i.id}}" style="background:white; color:black; font-family:serif;">Read Blog</a>
+                <br><br>
+                <h5 style="font-family:serif;">Posted by : {{i.author|upper}}  on {{i.publish}}</h5>
+        </div>
+      </div><br>
+      {% endfor %}
+
+      <!-- when there is no drafted blogs available -->
+        {% else %}
+          <div id="maindiv">
+            <h1>No data found</h1>
+          </div><br>
+        {% endif %}
+
+
+    <!-- code for pagination on all blogs page -->
+    <ul class="pagination">
+      {% for i in paginator.page_range %}
+        <li class="page-item" {% if i == page_number %} active {% endif %}>
+          <a class="page-link" href="?page={{i}}">{{i}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <center>
+  </body>
+{% endblock %}

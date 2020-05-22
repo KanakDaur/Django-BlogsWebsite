@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>edit profile form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style media="screen">
+      #formdiv{
+        border:3px solid black;
+        width:250px;
+        text-align:left;
+        padding-left:30px;
+      }
+      #divhead{
+        float:left;
+        margin-left:50px;
+      }
+      body{
+        background-image: url("{% static 'images/cacty.jpeg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+          }
+    </style>
+  </head>
+  <body>
+  <center>
+    <div id="divhead"><br><br><br><br><br><br><br><br><br><br><br>
+    <h1>Hey ! {{request.user|title}}</h1>
+    <h2>You can edit your profile here</h2>
+    </div><br>
+          <div id="formdiv"><br>
+          <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{user_form.as_p}}
+            {{profile_form.as_p}}
+            <hr class="my-4">
+            <p class="lead">
+            <input type="submit" class="btn btn-primary" value="submit">
+            <a href="/" class="btn btn-warning">Home</a>
+            </p>
+          </form>
+          </div>
+    </center>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Draft blogs page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style media="screen">
+      #maindiv{
+        margin-top:200px;
+        margin-left:10px;
+        padding-left:10px;
+        border: 2px solid black;
+        width:710px;
+        font-family:monospace;
+        padding-bottom: 8px;
+      }
+      body{
+        background-image: url("{% static 'images/mount.jpeg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    {% if draft %}
+    <div id="maindiv">
+    <h1>All Drafted blogs of : {{user.get_username|upper}}</h1>
+    <hr>
+      {% for i in draft %}
+      <h2>{{i.title|title}}</h2>
+        <a href="/updateblog/{{i.id}}" class="btn btn-success" style="font-family:serif; font-size:15px;">Edit & Publish </a>
+        <a href="/deleteblog/{{i.id}}" class="btn btn-danger" style="font-family:serif; font-size:15px;">Delete draft</a>
+        <!--a href="/publishblog/{{i.id}}" class="btn btn-info" style="font-family:serif; font-size:15px;">Publish draft</a--><hr>
+      {% endfor %}
+
+  <!-- when there is no drafted blogs available -->
+    {% else %}
+      <div id="maindiv">
+        <h1>No data found</h1>
+      </div><br>
+    {% endif %}
+
+      <!-- The below block of code will return back the user to the previous page -->
+      &nbsp;&nbsp;&nbsp;<button onclick="goBack()" class="btn btn-warning" style="color:black; font-family: serif;">Go Back</button>
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+
+    </div>
+  </body>
+</html>

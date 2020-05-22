@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Post your blogs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style media="screen">
+      #blogjumbo{
+        width: 400px;
+        text-align: left;
+        height: 620px;
+        color:black;
+
+      }
+      body{
+        font-family: inherit;
+        background-image: url("{% static 'images/sun.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: inherit;
+        color:black;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>{{user.get_username|title}} , you can post your Blog here</h1>
+      <div class="container">
+        <div class="jumbotron" id="blogjumbo">
+      <form method="post" style="color:orange;">
+        {{form.as_p}}
+        {% csrf_token %}
+        <input type="submit" class="btn btn-success" value="Insert/Update">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      </form>
+      <!-- The below block of code will return back the user to the previous page -->
+      <button onclick="goBack()" class="btn btn-warning" style="color:black; font-family: serif;">Go Back</button>
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
+    </center>
+  </body>

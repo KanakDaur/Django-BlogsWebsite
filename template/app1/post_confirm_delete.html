@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>delete blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style media="screen">
+      body{
+        background-image: url("{% static 'images/delete.jpeg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <center><br><br>
+    <form method="post">
+      {% csrf_token %}
+      <h1>{{user.get_username|upper}} ,do you really want to delete : {{post.title}} Blog</h1><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <input type="submit" class="btn btn-danger btn-lg" value="yes..DELETE">
+      <a href="/myblogs" class="btn btn-info btn-lg">NO..CANCEL</a>
+    </form>
+    </center>
+  </body>
+</html>
