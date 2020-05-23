@@ -114,15 +114,15 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="item active">
-          <img src="{% static 'images/blog1.jpg' %}" alt="Los Angeles">
+          <img src="{% static 'images/blog1.jpg' %}" alt="carousel image">
         </div>
 
         <div class="item">
-          <img src="{% static 'images/blog5.jpg' %}" alt="Chicago">
+          <img src="{% static 'images/blog5.jpg' %}" alt="carousel image">
         </div>
 
         <div class="item">
-          <img src="{% static 'images/blog3.jpg' %}" alt="New york">
+          <img src="{% static 'images/blog3.jpg' %}" alt="carousel image">
         </div>
       </div>
 
@@ -139,7 +139,7 @@
 </div>
 <br><br>
 
-  <!-- marquee left -->
+  <!-- left division which will display the five latest blogs -->
   <div class="#" id="side" style="height:400px; width:400px;" >
     <table style="height:390px; width:390px;" class="table table-sm table-dark" id="tb">
       <thead>
@@ -150,7 +150,7 @@
       <tbody>
         {% for i in allblogs %}
         <tr>
-          <td><a href="/{{i.id}}" style="color:white; font-size:20px; font-family:serif;" >{{i.title}}</a></td>
+          <td><a href="/{{i.id}}" style="color:white; font-size:20px; font-family:serif;" >{{i.title|truncatechars:40}}</a></td>
         </tr>
         {% endfor %}
       </tbody>
@@ -158,6 +158,9 @@
   </div>
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!-- categories section starts from here -->
+
 <div>
   <h1 align="center" style="background:black;">Categories</h1>
   <br>
@@ -181,6 +184,8 @@
   </center>
   </table>
 </div><br>
+
+<!-- page footer -->
   <div class="jumbotron" id="jumbo">
     <p> Copyright &copy; by kanak Daur</p>
   </div>
