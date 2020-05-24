@@ -19,8 +19,15 @@
         {% csrf_token %}
           <h1>{{comment.user|title}}, Do you really want to delete the comment : {{comment.content}}</h1><br>
           <input type="submit" value="Yes, Delete" class="btn btn-danger">
-          <a href="/allblogs" class="btn btn-info">No, Cancel</a>
-      </form>
+      </form><br>
+
+      <!-- The below block of code will return back the user to the previous page without deleting the comment -->
+      <button onclick="goBack()" class="btn btn-info" style="color:black; font-family: serif;">No, Cancel</button>
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
     </center>
   </body>
 </html>
