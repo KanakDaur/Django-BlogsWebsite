@@ -53,11 +53,11 @@
       background-color: black;
     }
     .img-rounded {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       float: left;
       border-radius: 50%;
-      margin-top: 4px;
+      margin-top: 9px;
     }
   </style>
 </head>
@@ -88,9 +88,9 @@
       {% if request.user.is_authenticated %}
       <li>
         {% if request.user.profile.photo %}
-        <img src="{{request.user.profile.photo.url}}" alt="" class="img-rounded">
+        <img src="{{request.user.profile.photo.url}}" class="img-rounded">
         {% else %}
-        <img src="/media/avatar2.jpg" class="img-rounded">
+        <img src="media/avatar2.jpg" class="img-rounded">
         {% endif %}
         <a href="/edit_profile">Hey !!! {{user.get_username|title}}</a>
       </li>
@@ -144,7 +144,7 @@
     <table style="height:390px; width:390px;" class="table table-sm table-dark" id="tb">
       <thead>
           <tr>
-            <td style="background:black;"><h3><marquee scrollamount="8"> 5 Trending Blogs of the Day</marquee></h3></td>
+            <td style="background:black;"><h3><marquee scrollamount="8"> Top 5 Latest Blogs </marquee></h3></td>
           </tr>
       </thead>
       <tbody>

@@ -6,6 +6,7 @@ class signupform(forms.ModelForm):
         model = User
         fields = ['username','password','email','first_name','last_name']
 
+
 class commentform(forms.ModelForm):
     class Meta:
         model = comment

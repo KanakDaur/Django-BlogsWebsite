@@ -31,11 +31,10 @@ class comment(models.Model):
     def __str__(self):
         return '{}-{}'.format(self.pst.title,str(self.user.username))
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     dob = models.DateField(null = True, blank = True)
-    photo = models.ImageField(null = True, blank = True)
+    photo = models.ImageField(null = True,blank = True, default="avatar2.jpg")
 
     def __str__(self):
         return "profile of user {}".format(self.user.username)

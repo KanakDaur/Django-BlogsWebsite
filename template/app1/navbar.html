@@ -31,13 +31,12 @@
       -o-background-size: cover;
     }
     .img-rounded {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       float: left;
       border-radius: 50%;
-      margin-top: 4px;
+      margin-top: 9px;
     }
-
   </style>
 </head>
 <body>
@@ -66,7 +65,11 @@
       {% endif %}
       {% if request.user.is_authenticated %}
       <li>
-        <img src="{{request.user.profile.photo.url}}" alt="" class="img-rounded">
+        {% if request.user.profile.photo %}
+        <img src="{{request.user.profile.photo.url}}" class="img-rounded">
+        {% else %}
+        <img src="/media/avatar2.jpg" class="img-rounded">
+        {% endif %}
         <a href="/edit_profile">Hey !!! {{user.get_username|title}}</a>
       </li>
       <li><a href="/accounts/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
