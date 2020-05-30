@@ -56,7 +56,7 @@ def allblogs_detailview(request,id):
 @method_decorator(login_required, name='dispatch')
 class postblogs_view(CreateView):
     model = post
-    fields = ('title','body','status','category')
+    fields = ('title','body','status','category','image')
     def form_valid(self,form):
         post = form.save(commit = False)
         post.author = self.request.user # to fill author name by default as a logged in user
@@ -79,7 +79,7 @@ def myblogs_view(request):
 @method_decorator(login_required, name='dispatch')
 class update_blogs(UpdateView):
     model = post
-    fields = ('title','body','status','category')
+    fields = ('title','body','status','category','image')
 
 @method_decorator(login_required, name='dispatch')
 class delete_blogs(DeleteView):

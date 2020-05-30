@@ -13,10 +13,11 @@ class post(models.Model):
     publish = models.DateTimeField(default = timezone.now)
     created = models.DateTimeField(auto_now_add = True)
     updated = models.DateTimeField(auto_now_add = True)
+    image = models.FileField(upload_to = "images/",default="blogger.jpg")
     status = models.CharField(max_length = 20,choices = STATUS_CHOICES,default = 'draft')
     category = models.CharField(max_length = 50,choices = CATEGORY_CHOICES,default = 'other')
     def get_absolute_url(self):
-        return reverse("home")
+        return reverse("allblogs")
     class Meta:
         ordering = ('-publish',)
     def __str__(self):

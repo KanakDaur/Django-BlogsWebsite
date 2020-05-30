@@ -47,17 +47,18 @@
 <br>
       <h1 style="text-shadow:3px 3px black;">List of All Blogs</h1><br>
       {% if allblogs_object %}
-      {% for i in allblogs_object %}
-      <div style="color:white;">
-        <div class="jumbotron" style="width:1000px; border-radius:200px;" id="blogjumbo">
-          <h2 class="display-4">{{i.title}}</h2>
-          <br>
-                <a class="btn-lg" href="/{{i.id}}" style="background:white; color:black; font-family:serif;">Read Blog</a>
-                <br><br>
-                <h5 style="font-family:serif;">Posted by : {{i.author|upper}}  on {{i.publish}}</h5>
-        </div>
-      </div><br>
-      {% endfor %}
+        {% for i in allblogs_object %}
+        <div style="color:white;">
+          <div class="jumbotron" style="width:1000px; border-radius:200px;" id="blogjumbo">
+            <h2 class="display-4">{{i.title|title}}</h2>
+            <img src="{{i.image.url}}" height="150" width="200">            
+            <br><br>
+                  <a class="btn-lg" href="/{{i.id}}" style="background:white; color:black; font-family:serif;">Read Blog</a>
+                  <br><br>
+                  <h5 style="font-family:serif;">Posted by : {{i.author|upper}}  on {{i.publish}}</h5>
+          </div>
+        </div><br>
+        {% endfor %}
 
       <!-- when there is no blogs available -->
         {% else %}

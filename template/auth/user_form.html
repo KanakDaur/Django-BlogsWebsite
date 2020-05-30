@@ -9,7 +9,7 @@
       #signjumbo{
         width: 360px;
         text-align: right;
-        height: 450px;
+        height: 560px;
 
       }
       body{
@@ -23,19 +23,19 @@
   </head>
   <body>
     <center><br>
-      <h1>Create New Account</h1><br>
+      <h1>Create New Account</h1>
       <div class="container">
         <div class="jumbotron" id="signjumbo">
-    <form method="post">
-      {{form.as_p}}
-      {% csrf_token %}
-      <hr class="my-4">
-      <p class="lead">
-        <input type="submit" class="btn btn-primary" value="Sign-Up">
-      </p>
-    </form>
-  </div>
-</div>
-<a href="/" class="btn btn-warning">Back to Home</a>
+          <form method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <hr class="my-4">
+            <p class="lead">
+              <input type="submit" class="btn btn-primary" value="Sign-Up">
+            </p>
+          </form>
+          <a href="/" class="btn btn-warning">Back to Home</a>
+        </div>
+      </div>
   </body>
 </html>

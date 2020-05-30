@@ -28,7 +28,7 @@
       <h1>{{user.get_username|title}} , you can post your Blog here</h1>
       <div class="container">
         <div class="jumbotron" id="blogjumbo">
-      <form method="post" style="color:orange;">
+      <form method="post" style="color:orange;" enctype="multipart/form-data">
         {{form.as_p}}
         {% csrf_token %}
         <input type="submit" class="btn btn-success" value="Insert/Update">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
